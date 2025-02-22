@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { User } from '$lib/database';
+    import type { User } from '$lib/server/database';
   
     let users: User[] = [];
   

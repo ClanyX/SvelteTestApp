@@ -1,6 +1,6 @@
 import type { RequestEvent } from '@sveltejs/kit';
-import db from '$lib/database';
-import type { User } from '$lib/database';
+import db from '$lib/server/database';
+import type { User } from '$lib/server/database';
 
 // GET: Vrátí seznam všech uživatelů
 export async function GET() {
