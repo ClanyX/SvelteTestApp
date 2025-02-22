@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.butonapp{
+    @apply bg-blue-600 text-white hover:bg-blue-800 p-3 rounded-4xl hover:rounded-none duration-300;
+}

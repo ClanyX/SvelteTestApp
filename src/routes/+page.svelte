@@ -11,7 +11,7 @@
     });
 </script>
 
-<form>
+<form class="text-center text-yellow-500 mt-4">
     <label>
         <input type="text" placeholder="name" bind:value={$namell}>
     </label>
@@ -26,9 +26,13 @@
     </label>
 </form>
 
-<div>
+<div class="text-center text-green-300 border-3 border-green-300 p-3 w-2xs m-auto mt-2">
     <p>Name: {$renderText[0]}</p>
     <p>Lastname: {$renderText[1]}</p>
     <p>Age: {$renderText[2]}</p>
     <p>Day: {$renderText[3]}</p>
+</div>
+
+<div class="justify-center text-center pt-5">
+    <button class="butonapp">CLick me</button>
 </div>
