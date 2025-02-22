@@ -35,4 +35,5 @@
 
 <div class="justify-center text-center pt-5">
     <button class="butonapp"><a href="/testpage">Test page</a></button>
+    <button class="butonapp"><a href="/account">Users</a></button>
 </div>
