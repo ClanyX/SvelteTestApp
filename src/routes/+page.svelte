@@ -34,5 +34,5 @@
 </div>
 
 <div class="justify-center text-center pt-5">
-    <button class="butonapp">CLick me</button>
+    <button class="butonapp"><a href="/testpage">Test page</a></button>
 </div>
