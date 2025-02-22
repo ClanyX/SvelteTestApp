@@ -5,7 +5,7 @@ export interface User {
   name: string;
 }
 
-const db = new Database('database.sqlite');
+const db = new Database('src/lib/server/database.sqlite');
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
