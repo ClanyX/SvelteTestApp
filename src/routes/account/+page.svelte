@@ -1,14 +1,18 @@
 <script lang="ts">
     import type { User } from '$lib/server/database';
 
-    let users: User[] = [];
+    let users: User[] = $state([]);
 
     // Načtení seznamu uživatelů
+    $effect(() => {
+        loadUsers();
+    });
+
     async function loadUsers() {
-      const res = await fetch('/api/users');
-      users = await res.json();
-    }
-  
+        const res = await fetch('/api/users');
+        users = await res.json();
+    };
+
     // Přidání nového uživatele
     async function addUser() {
       const name = prompt('Zadejte jméno uživatele');
@@ -29,8 +33,7 @@
   </script>
   
   <h1>Seznam uživatelů</h1>
-  <button class="butonapp" on:click={loadUsers}>Načíst uživatele</button>
-  <button class="butonapp" on:click={addUser}>Přidat uživatele</button>
+  <button class="butonapp" onclick={addUser}>Přidat uživatele</button>
   
   <ul>
     {#each users as user}
