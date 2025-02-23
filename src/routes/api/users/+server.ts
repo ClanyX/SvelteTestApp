@@ -14,14 +14,14 @@ export async function GET() {
 
 // POST: Přidá nového uživatele
 export async function POST({ request }: RequestEvent) {
-  const { name } = await request.json();
+  const { name, lastname, age, telephone } = await request.json();
 
-  if (!name) {
-    return new Response(JSON.stringify({ error: 'Jméno je povinné' }), { status: 400 });
+  if (!name || !lastname || typeof age !== 'number' || !telephone) {
+    return new Response(JSON.stringify({ error: 'Špatná data' }), { status: 400 });
   }
 
-  const stmt = db.prepare("INSERT INTO users (name) VALUES (?)");
-  stmt.run(name);
+  const stmt = db.prepare("INSERT INTO users (name, lastname, age, telephone) VALUES (?, ?, ?, ?)");
+  stmt.run(name, lastname, age, telephone);
 
   return new Response(JSON.stringify({ message: 'Uživatel přidán!' }), {
     headers: { 'Content-Type': 'application/json' }

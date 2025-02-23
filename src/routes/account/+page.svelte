@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { User } from '$lib/server/database';
-  
+
     let users: User[] = [];
-  
+
     // Načtení seznamu uživatelů
     async function loadUsers() {
       const res = await fetch('/api/users');
@@ -11,13 +11,17 @@
   
     // Přidání nového uživatele
     async function addUser() {
-      const name = prompt("Zadej jméno:");
-      if (!name) return;
+      const name = prompt('Zadejte jméno uživatele');
+      const lastname = prompt('Zadejte příjmení uživatele');
+      const age = prompt('Zadejte vek uživatele');
+      const telephone = prompt('Zadejte telefon uživatele');
+  
+      if (!name || !lastname || !age || !telephone) return;
   
       await fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ name, lastname, age: Number(age), telephone }),
       });
   
       loadUsers();
@@ -26,11 +30,11 @@
   
   <h1>Seznam uživatelů</h1>
   <button class="butonapp" on:click={loadUsers}>Načíst uživatele</button>
-  <button class="butonapp"   on:click={addUser}>Přidat uživatele</button>
+  <button class="butonapp" on:click={addUser}>Přidat uživatele</button>
   
   <ul>
     {#each users as user}
-      <li>{user.id}: {user.name}</li>
+      <li>{user.id}: Name: {user.name} | Lastname: {user.lastname} | Age: {user.age} | Telephone: {user.telephone}</li>
     {/each}
   </ul>
   
