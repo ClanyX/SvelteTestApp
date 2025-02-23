@@ -23,7 +23,5 @@ export async function POST({ request }: RequestEvent) {
   const stmt = db.prepare("INSERT INTO users (name, lastname, age, telephone) VALUES (?, ?, ?, ?)");
   stmt.run(name, lastname, age, telephone);
 
-  return new Response(JSON.stringify({ message: 'Uživatel přidán!' }), {
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return GET();
 }

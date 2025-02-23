@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { invalidateAll } from '$app/navigation';
     import type { User } from '$lib/server/database';
 
     let users: User[] = $state([]);
@@ -22,13 +23,15 @@
   
       if (!name || !lastname || !age || !telephone) return;
   
-      await fetch('/api/users', {
+      const res = await fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, lastname, age: Number(age), telephone }),
       });
-  
-      loadUsers();
+
+      if(res.ok) {
+        users = await res.json();
+      }
     }
   </script>
   
